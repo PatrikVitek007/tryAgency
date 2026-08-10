@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Přístup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Úvodní Age Gate (Micro-commitment) -->
+    <div id="age-gate" class="overlay">
+        <div class="modal">
+            <h2>Ověření věku</h2>
+            <p>Tento profil obsahuje 18+ materiál. Jsi plnoletý/á?</p>
+            <button id="btn-yes" class="btn primary">Ano, je mi 18+</button>
+            <button id="btn-no" class="btn secondary">Ne, odejít</button>
+        </div>
+    </div>
+
+    <!-- Hlavní Funnel (Skrytý, dokud se neodklikne věk) -->
+    <div id="main-content" class="container hidden">
+        <header>
+            <!-- Místo pro profilovku (placeholder) -->
+            <img src="https://via.placeholder.com/120" alt="Profil" class="profile-pic">
+            <h1>@VIP_Modelka</h1>
+            <p class="bio">Exkluzivní obsah, který jinde nenajdeš. 🤫</p>
+        </header>
+
+        <main>
+            <div class="urgency-box">
+                <h3>🔥 VIP SLEVA 50 % KONČÍ ZA:</h3>
+                <div id="countdown" class="timer">05:00</div>
+            </div>
+
+            <!-- Hlavní Call to Action -->
+            <a href="ODKAZ_NA_ONLYFANS" class="btn pulse">Odemknout VIP Přístup</a>
+            
+            <p class="slots-left">Zbývají jen <b>3</b> zlevněná místa!</p>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
