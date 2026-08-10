@@ -2,44 +2,398 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP Přístup</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VIP Access | @VIP_Modelka</title>
+    <!-- Použijeme moderní font Poppins pro nadpisy a Inter pro tělo textu -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Reset & Základy --- */
+        :root {
+            --bg-deep: #050505;
+            --bg-card: #111111;
+            --bg-modal: #161616;
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --accent-main: #00F2FE;
+            --accent-gradient: linear-gradient(135deg, #00F2FE 0%, #4facfe 100%);
+            --accent-pulse: rgba(0, 242, 254, 0.5);
+            --danger: #FF4757;
+            --shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent; /* Odstranění modrého podsvícení na mobilu */
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 600; }
+        .hidden { display: none !important; }
+
+        /* --- Age Gate: Glassmorphism efekt --- */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px); /* Efekt rozmazání pozadí */
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .overlay.fade-out { opacity: 0; pointer-events: none; }
+
+        .modal {
+            background: var(--bg-modal);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.05);
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .overlay.fade-out .modal { transform: scale(0.9); }
+
+        .modal h2 { margin-bottom: 15px; color: var(--accent-main); font-size: 28px; }
+        .modal p { margin-bottom: 30px; color: var(--text-muted); font-size: 16px; }
+
+        /* Tlačítka s moderním designem */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn.primary { background: var(--accent-gradient); color: #000; }
+        .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-pulse); }
+        
+        .btn.secondary { background: #222; color: #fff; }
+        .btn.secondary:hover { background: #2a2a2a; }
+
+        /* --- Hlavní Funnel --- */
+        .container {
+            width: 100%;
+            max-width: 480px; /* Mobile-first šířka */
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Moderní profilovka s gradientem */
+        .profile-pic-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic-container::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-deep);
+        }
+
+        h1 { font-size: 26px; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .bio { color: var(--text-muted); font-size: 15px; max-width: 300px; margin-bottom: 0; }
+
+        /* Vizuální teaser - simulace zamčeného obsahu */
+        .hero-teaser {
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .teaser-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .teaser-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 10px;
+            background-color: #222;
+            object-fit: cover;
+            filter: blur(8px) brightness(0.6); /* Efekt zamčení */
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .teaser-info {
+            display: flex;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .teaser-info span { display: flex; align-items: center; gap: 5px; }
+
+        /* Urgency box s odpočtem */
+        .urgency-box {
+            width: 100%;
+            background: rgba(255, 71, 87, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 71, 87, 0.2);
+        }
+
+        .urgency-box h3 {
+            font-size: 14px;
+            color: var(--danger);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timer {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 2px;
+        }
+
+        /* Hlavní CTA tlačítko s vylepšeným pulzováním */
+        .pulse {
+            background: var(--accent-gradient);
+            color: #000;
+            margin-bottom: 10px;
+            font-size: 20px;
+            padding: 18px;
+            animation: pulse-animation 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 10px var(--accent-pulse); transform: scale(1); }
+            50% { box-shadow: 0 0 30px var(--accent-pulse); transform: scale(1.03); }
+            100% { box-shadow: 0 0 10px var(--accent-pulse); transform: scale(1); }
+        }
+
+        .slots-left {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .slots-left b { color: var(--danger); }
+
+        /* Social Proof sekce */
+        .live-stats {
+            margin-top: 40px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .stat { text-align: center; }
+        .stat-value { font-size: 20px; font-weight: 600; color: var(--accent-main); }
+        .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+
+        footer {
+            margin-top: auto;
+            padding-top: 50px;
+            font-size: 12px;
+            color: #444;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Úvodní Age Gate (Micro-commitment) -->
+    <!-- Úvodní Age Gate (Glassmorphism & Mikro-souhlas) -->
     <div id="age-gate" class="overlay">
         <div class="modal">
-            <h2>Ověření věku</h2>
-            <p>Tento profil obsahuje 18+ materiál. Jsi plnoletý/á?</p>
+            <h2>PŘÍSTUP 18+</h2>
+            <p>Tento exkluzivní profil obsahuje materiál pro dospělé. Potvrďte svou plnoletost pro pokračování.</p>
             <button id="btn-yes" class="btn primary">Ano, je mi 18+</button>
             <button id="btn-no" class="btn secondary">Ne, odejít</button>
         </div>
     </div>
 
-    <!-- Hlavní Funnel (Skrytý, dokud se neodklikne věk) -->
+    <!-- Hlavní Funnel (Mobile-First, Modern) -->
     <div id="main-content" class="container hidden">
         <header>
-            <!-- Místo pro profilovku (placeholder) -->
-            <img src="https://via.placeholder.com/120" alt="Profil" class="profile-pic">
+            <div class="profile-pic-container">
+                <!-- Zde nahraď ODKAZ_NA_FOTKU reálným odkazem, nebo nech placeholder -->
+                <img src="https://via.placeholder.com/130x130/111111/00F2FE?text=VIP" alt="Profil" class="profile-pic">
+            </div>
             <h1>@VIP_Modelka</h1>
-            <p class="bio">Exkluzivní obsah, který jinde nenajdeš. 🤫</p>
+            <p class="bio">Pouze pro VIP. Odemkni přístup k obsahu, který jinde neuvidíš.🤫</p>
         </header>
 
         <main>
+            <!-- Vizuální teaser - simulace locked obsahu -->
+            <div class="hero-teaser">
+                <div class="teaser-images">
+                    <img src="https://via.placeholder.com/150/222222/555555" alt="Teaser" class="teaser-img">
+                    <img src="https://via.placeholder.com/150/222222/555555" alt="Teaser" class="teaser-img">
+                    <img src="https://via.placeholder.com/150/222222/555555" alt="Teaser" class="teaser-img">
+                </div>
+                <div class="teaser-info">
+                    <span>🔒 200+ Media</span>
+                    <span>🔓 10+ Private Videos</span>
+                </div>
+            </div>
+
+            <!-- Urgency box s odpočtem -->
             <div class="urgency-box">
                 <h3>🔥 VIP SLEVA 50 % KONČÍ ZA:</h3>
                 <div id="countdown" class="timer">05:00</div>
             </div>
 
-            <!-- Hlavní Call to Action -->
-            <a href="ODKAZ_NA_ONLYFANS" class="btn pulse">Odemknout VIP Přístup</a>
+            <!-- Hlavní Call to Action (Zde doplň OnlyFans link) -->
+            <a href="https://your-onlyfans-link.com" class="btn pulse primary">ODEMKNOUT VIP PŘÍSTUP</a>
             
-            <p class="slots-left">Zbývají jen <b>3</b> zlevněná místa!</p>
+            <p class="slots-left">Zbývají jen <b>3</b> zlevněná místa z 50!</p>
         </main>
+
+        <!-- Social Proof (fiktivní, ale působí profi) -->
+        <div class="live-stats">
+            <div class="stat">
+                <div class="stat-value">12k+</div>
+                <div class="stat-label">Fans</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Satisfaction</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Chat</div>
+            </div>
+        </div>
+
+        <footer>
+            DMCA Protected | 18+ Only | VIP Access 2024
+        </footer>
     </div>
 
-    <script src="script.js"></script>
+    <!-- JavaScript (Ověření věku a Odpočet) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ageGate = document.getElementById('age-gate');
+            const mainContent = document.getElementById('main-content');
+            const btnYes = document.getElementById('btn-yes');
+            const btnNo = document.getElementById('btn-no');
+            const display = document.getElementById('countdown');
+            
+            let timerInterval;
+
+            // Kontrola, zda už uživatel věk potvrdil (aby se mu to neukazovalo pořád)
+            if (localStorage.getItem('ageVerified') === 'true') {
+                showMainContent();
+            }
+
+            // Logika potvrzení věku
+            btnYes.addEventListener('click', () => {
+                localStorage.setItem('ageVerified', 'true'); // Uložit souhlas
+                showMainContent();
+            });
+
+            btnNo.addEventListener('click', () => {
+                window.location.href = "https://www.google.com"; // Přesměrování pryč
+            });
+
+            function showMainContent() {
+                ageGate.classList.add('fade-out'); // Jemné zmizení
+                setTimeout(() => {
+                    ageGate.classList.add('hidden');
+                    mainContent.classList.remove('hidden');
+                    // Spustit odpočet na 5 minut (300 sekund)
+                    startTimer(300, display);
+                }, 500); // Čas shodný s CSS transition
+            }
+
+            // Funkce pro odpočet času (300 -> 0)
+            function startTimer(duration, display) {
+                let timer = duration, minutes, seconds;
+                
+                timerInterval = setInterval(() => {
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
+
+                    // Přidání nuly před jednociferná čísla
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    display.textContent = minutes + ":" + seconds;
+
+                    // Logika, když čas vyprší
+                    if (--timer < 0) {
+                        clearInterval(timerInterval);
+                        display.textContent = "00:00";
+                        display.style.color = "#FF4757"; // Zčervená pro efekt
+                        // Volitelné: Změnit text tlačítka nebo schovat slevu
+                    }
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
