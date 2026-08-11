@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VIP Access | @kristiiinka_f</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #050505;
@@ -12,18 +12,13 @@
             --bg-modal: #161616;
             --text-main: #FFFFFF;
             --text-muted: #A0A0A0;
-            --of-blue: #00AFF0; /* OnlyFans color */
-            --fansly-blue: #00AEEF; /* Fansly color */
-            --danger: #FF4757;
-            --shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --of-blue: #00AFF0; 
+            --fansly-blue: #00AEEF; 
+            --danger: #FF3366; 
+            --shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
         body {
             background-color: var(--bg-deep);
@@ -36,230 +31,194 @@
             overflow-x: hidden;
         }
 
+        /* --- MOBILNÍ ZOBRAZENÍ --- */
         .bg-image {
-            position: fixed;
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh;
-            background-size: cover;
-            background-position: center top;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-size: cover; background-position: center top;
             z-index: -2;
-            filter: blur(8px) brightness(0.35);
+            filter: blur(8px) brightness(0.25);
             transform: scale(1.1);
         }
 
         body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.1) 0%, rgba(5,5,5,0.95) 100%);
-            z-index: -1;
-            pointer-events: none;
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.98) 100%);
+            z-index: -1; pointer-events: none;
         }
 
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 600; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 700; }
         .hidden { display: none !important; }
 
+        /* Age Gate Modal */
         .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.5s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 1; transition: opacity 0.5s ease;
         }
-
         .overlay.fade-out { opacity: 0; pointer-events: none; }
 
         .modal {
-            background: var(--bg-modal);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,0.05);
-            transform: scale(1);
-            transition: transform 0.3s ease;
+            background: var(--bg-modal); padding: 40px 30px; border-radius: 20px;
+            text-align: center; width: 90%; max-width: 400px;
+            box-shadow: 0 0 40px rgba(255, 51, 102, 0.2);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            transform: scale(1); transition: transform 0.3s ease;
         }
-
         .overlay.fade-out .modal { transform: scale(0.9); }
 
-        .modal h2 { margin-bottom: 15px; color: var(--of-blue); font-size: 28px; }
-        .modal p { margin-bottom: 30px; color: var(--text-muted); font-size: 16px; }
+        .warning-icon { font-size: 40px; margin-bottom: 10px; }
+        .modal h2 { margin-bottom: 10px; color: var(--danger); font-size: 26px; text-transform: uppercase; }
+        .modal p { margin-bottom: 25px; color: #ddd; font-size: 15px; }
 
         .btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            display: block; width: 100%; padding: 16px; margin-bottom: 15px;
+            border: none; border-radius: 12px; font-size: 18px; font-weight: 700;
+            cursor: pointer; text-decoration: none; text-align: center;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-
-        .btn.primary { background: var(--of-blue); color: #fff; }
-        .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 175, 240, 0.4); }
-        .btn.secondary { background: #222; color: #fff; }
-        .btn.secondary:hover { background: #2a2a2a; }
+        .btn.primary { background: var(--danger); color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+        .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255, 51, 102, 0.5); }
+        .btn.secondary { background: #222; color: #888; }
 
         .container {
-            width: 100%;
-            max-width: 480px;
-            padding: 40px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 100%; max-width: 480px; padding: 40px 20px;
+            display: flex; flex-direction: column; align-items: center;
         }
-
-        header { margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; }
-
-        .profile-pic-container {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin-bottom: 15px;
+        .desktop-split {
+            display: flex; flex-direction: column; width: 100%; gap: 20px;
         }
+        .left-col, .right-col { width: 100%; display: flex; flex-direction: column; }
 
+        header { margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .profile-pic-container { position: relative; width: 115px; height: 115px; margin-bottom: 15px; }
         .profile-pic-container::before {
-            content: '';
-            position: absolute;
-            top: -4px; left: -4px; right: -4px; bottom: -4px;
-            background: linear-gradient(135deg, var(--of-blue) 0%, var(--fansly-blue) 100%);
-            border-radius: 50%;
-            z-index: -1;
+            content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
+            background: linear-gradient(135deg, var(--danger) 0%, var(--of-blue) 100%);
+            border-radius: 50%; z-index: -1; animation: border-glow 3s infinite alternate;
         }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--bg-deep);
+        @keyframes border-glow {
+            0% { box-shadow: 0 0 10px rgba(255, 51, 102, 0.5); }
+            100% { box-shadow: 0 0 25px rgba(0, 175, 240, 0.5); }
         }
+        .profile-pic { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg-deep); }
+        h1 { font-size: 26px; margin-bottom: 5px; letter-spacing: -0.5px; }
+        .bio { color: #fff; font-size: 15px; max-width: 320px; margin-bottom: 0; font-weight: 500; }
+        .bio span { color: var(--danger); font-weight: 700; }
 
-        h1 { font-size: 24px; margin-bottom: 5px; letter-spacing: -0.5px; }
-        .bio { color: var(--text-muted); font-size: 14px; max-width: 300px; margin-bottom: 0; }
+        /* Pevná mřížka, aby se text nerozjížděl na telefonech */
+        .locked-teaser {
+            width: 100%; background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 15px; padding: 15px 5px; margin-bottom: 25px;
+            display: flex; justify-content: space-between; align-items: flex-start; backdrop-filter: blur(5px);
+        }
+        .teaser-item { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 33%; padding: 0 5px; }
+        .teaser-icon { font-size: 22px; margin-bottom: 2px; }
+        .teaser-text { 
+            font-size: 10px; color: var(--text-muted); text-transform: uppercase; 
+            font-weight: 600; letter-spacing: 0.5px; text-align: center; line-height: 1.2; 
+        }
+        .teaser-val { font-size: 15px; font-weight: 700; color: #fff; text-align: center; }
 
         .urgency-box {
-            width: 100%;
-            background: rgba(255, 71, 87, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 71, 87, 0.2);
+            width: 100%; background: rgba(255, 51, 102, 0.1);
+            padding: 15px; border-radius: 15px; margin-bottom: 25px;
+            border: 1px dashed rgba(255, 51, 102, 0.4); text-align: center;
         }
+        .urgency-box h3 { font-size: 12px; color: var(--danger); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .timer { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800; color: #fff; letter-spacing: 2px; }
 
-        .urgency-box h3 {
-            font-size: 13px;
-            color: var(--danger);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .timer {
-            font-family: 'Poppins', sans-serif;
-            font-size: 38px;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: 2px;
-        }
-
-        .money-zone {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
+        .money-zone { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+        
         .btn-of {
-            background: #00AFF0;
-            color: white;
-            padding: 18px;
-            font-size: 20px;
+            background: var(--of-blue); color: white; padding: 18px; font-size: 19px;
             animation: pulse-of 2s infinite ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 15px; text-decoration: none;
         }
+        .btn-of div { text-align: center; }
+        .btn-of span { font-size: 13px; opacity: 0.8; font-weight: 500; display: block; margin-top: 2px; text-transform: none; }
 
         .btn-fansly {
-            background: #2b2b2b;
-            color: #00AEEF;
-            border: 1px solid #00AEEF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            background: #1a1a1a; color: var(--fansly-blue); border: 1px solid var(--fansly-blue);
+            display: flex; align-items: center; justify-content: center; gap: 15px; padding: 18px; font-size: 19px; text-decoration: none;
         }
-        
-        .btn-fansly:hover {
-            background: rgba(0, 174, 239, 0.1);
-        }
+        .btn-fansly div { text-align: center; }
+        .btn-fansly span { font-size: 13px; color: var(--text-muted); font-weight: 500; display: block; margin-top: 2px; text-transform: none; }
+        .btn-fansly:hover { background: rgba(0, 174, 239, 0.1); }
 
         @keyframes pulse-of {
             0% { box-shadow: 0 0 10px rgba(0, 175, 240, 0.3); transform: scale(1); }
-            50% { box-shadow: 0 0 25px rgba(0, 175, 240, 0.6); transform: scale(1.02); }
+            50% { box-shadow: 0 0 25px rgba(0, 175, 240, 0.7); transform: scale(1.02); }
             100% { box-shadow: 0 0 10px rgba(0, 175, 240, 0.3); transform: scale(1); }
         }
 
-        .social-zone {
-            margin-top: 20px;
-            width: 100%;
+        .social-zone { margin-top: 10px; width: 100%; text-align: center; }
+        .social-zone h4 { font-size: 11px; color: #555; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .social-icons { display: flex; justify-content: center; gap: 25px; }
+        
+        /* Ikonky nastavené na šedou barvu bez barevných gradientů */
+        .social-icon { 
+            color: var(--text-muted); text-decoration: none; display: flex; flex-direction: column; 
+            align-items: center; gap: 6px; font-size: 11px; font-weight: 500; transition: transform 0.3s, color 0.3s; 
         }
+        .social-icon svg { opacity: 0.6; transition: opacity 0.3s; }
+        .social-icon:hover { transform: scale(1.1); color: #fff; }
+        .social-icon:hover svg { opacity: 1; }
 
-        .social-zone h4 {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        footer { margin-top: auto; padding-top: 40px; font-size: 11px; color: #333; text-align: center; width: 100%; }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+        /* ==============================================
+           --- DESKTOP (PREMIUM SEAMLESS FADE LAYOUT) --- 
+           ============================================== */
+        @media (min-width: 900px) {
+            body { overflow: hidden; align-items: stretch; } 
+            
+            .bg-image {
+                width: 100vw; 
+                filter: blur(0px) brightness(0.7); 
+                transform: scale(1);
+                background-position: 20% center; 
+            }
+            
+            body::before { 
+                width: 100vw; 
+                background: linear-gradient(to right, rgba(5,5,5,0) 0%, rgba(5,5,5,0) 50%, rgba(5,5,5,0.95) 75%, #030303 100%); 
+            }
 
-        .social-icon {
-            color: #555;
-            text-decoration: none;
-            transition: color 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            font-size: 11px;
-        }
+            .container {
+                max-width: 100vw; padding: 0; margin: 0;
+                height: 100vh; justify-content: center; align-items: stretch;
+            }
 
-        .social-icon:hover { color: var(--text-main); }
-        .social-icon svg { width: 24px; height: 24px; fill: currentColor; }
+            .desktop-split { flex-direction: row; width: 100%; height: 100vh; gap: 0; }
 
-        footer {
-            margin-top: auto;
-            padding-top: 40px;
-            font-size: 11px;
-            color: #333;
-            text-align: center;
+            .left-col {
+                width: 50vw; height: 100vh; padding: 60px;
+                justify-content: flex-end;
+                border-right: none;
+            }
+            header { align-items: flex-start; text-align: left; margin-bottom: 20px; }
+            .profile-pic-container { width: 130px; height: 130px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+            h1 { font-size: 46px; text-shadow: 0 5px 20px rgba(0,0,0,0.9); margin-bottom: 10px; }
+            .bio { font-size: 17px; max-width: 450px; text-shadow: 0 5px 20px rgba(0,0,0,0.9); line-height: 1.5; }
+            
+            .locked-teaser {
+                margin-bottom: 0; max-width: 450px;
+                background: rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.15);
+            }
+
+            .right-col {
+                width: 50vw; height: 100vh;
+                background: transparent;
+                box-shadow: none;
+                z-index: 10;
+                justify-content: center; align-items: center;
+                padding: 40px;
+            }
+
+            .urgency-box, .money-zone, .social-zone { width: 100%; max-width: 400px; }
+            footer { display: none; } 
         }
     </style>
 </head>
@@ -269,64 +228,89 @@
 
     <div id="age-gate" class="overlay">
         <div class="modal">
-            <h2>PŘÍSTUP 18+</h2>
-            <p>Tento profil obsahuje materiál pro dospělé. Potvrďte svou plnoletost.</p>
-            <button id="btn-yes" class="btn primary">Ano, je mi 18+</button>
-            <button id="btn-no" class="btn secondary">Ne, odejít</button>
+            <div class="warning-icon">🔞</div>
+            <h2>EXPLICITNÍ OBSAH</h2>
+            <p>Vstupuješ do mé soukromé VIP zóny. Zde najdeš <strong>materiály zcela bez cenzury</strong>, které jinde nesmím publikovat.</p>
+            <button id="btn-yes" class="btn primary">Je mi 18+ (Vstoupit)</button>
+            <button id="btn-no" class="btn secondary">Odejít</button>
         </div>
     </div>
 
     <div id="main-content" class="container hidden">
-        <header>
-            <div class="profile-pic-container">
-                <img src="img/avatar.jpg" alt="Profil" class="profile-pic">
-            </div>
-            <h1>@kristiiinka_f</h1>
-            <p class="bio">Odemkni přístup k mému soukromému obsahu. 🤫</p>
-        </header>
+        <div class="desktop-split">
+            <div class="left-col">
+                <header>
+                    <div class="profile-pic-container">
+                        <img src="img/avatar.jpg" alt="Profil" class="profile-pic">
+                    </div>
+                    <h1>@kristiiinka_f 😈</h1>
+                    <p class="bio">VŠ studentka s vyznamenáním přes den, <span>outdoor a hardcore bez cenzury</span> v noci. 💦</p>
+                </header>
 
-        <main>
-            <div class="urgency-box">
-                <h3>🔥 VIP SLEVA KONČÍ ZA:</h3>
-                <div id="countdown" class="timer">05:00</div>
-            </div>
-
-            <!-- Money Zone: Primární cíl, obrovská tlačítka -->
-            <div class="money-zone">
-                <a href="https://onlyfans.com/kristiiinka" class="btn btn-of">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.82 17.526s-1.897-.935-3.08-1.543c-.886-.453-2.13-.76-2.525-1.572-.257-.528.05-1.4.05-1.4s1.776-1.523 2.194-2.81c.427-1.312-.224-2.883-.224-2.883s-.846-1.892-2.34-1.892c-1.493 0-2.34 1.892-2.34 1.892s-.65 1.57-.224 2.882c.418 1.287 2.194 2.81 2.194 2.81s.308.872.05 1.4c-.395.812-1.64 1.12-2.526 1.572-1.183.608-3.08 1.543-3.08 1.543-.54-.672-.865-1.53-.865-2.456 0-2.186 1.773-3.96 3.96-3.96H9.15s1.264-1.58 3.52-1.58 3.52 1.58 3.52 1.58h.086c2.187 0 3.96 1.774 3.96 3.96 0 .926-.324 1.784-.866 2.456z"/></svg>
-                    OnlyFans VIP
-                </a>
-                
-                <a href="https://fansly.com/Kristiiinka" class="btn btn-fansly">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.97 0A12 12 0 1024 12 11.99 11.99 0 0011.97 0zM7.22 8.44c1.23-.74 2.81-.53 3.82.5l3.24 3.32a.7.7 0 00.97.02l2.36-2.18a3.18 3.18 0 014.28.2 11.02 11.02 0 012.02 9.54c-1.25.13-2.61-.17-3.9-.96l-3.32-2.02a.7.7 0 00-.73.01l-1.92 1.25a3.18 3.18 0 01-4.22-.64l-1.46-1.64c-1.27-1.41-1.37-3.52-.25-5.06l-1.02-.91a.7.7 0 00-1.02.04l-1.6 1.75c-.32-.61-.59-1.25-.8-1.92 1.41-.65 2.5-1.74 3.03-3.26l.48 1.94c.18.73.9.72 1.04.02z"/></svg>
-                    Fansly Access
-                </a>
-            </div>
-
-            <!-- Social Zone: Upozaděné sítě, neberou pozornost -->
-            <div class="social-zone">
-                <h4>Free sociální sítě</h4>
-                <div class="social-icons">
-                    <a href="https://instagram.com/kristiiinka_f" class="social-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        Insta
-                    </a>
-                    <a href="https://twitter.com/Kristiiinkaof" class="social-icon">
-                        <svg viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                        X
-                    </a>
-                    <a href="https://www.reddit.com/user/lolittacz/" class="social-icon">
-                        <svg viewBox="0 0 24 24"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-1.797 1.815-5.32 1.823-7.144.025-.138-.137-.138-.358 0-.495.138-.138.361-.138.498 0 1.554 1.528 4.542 1.521 6.147-.101.139-.142.361-.144.5-.002.138.141.135.362-.001.573zm-.468-3.095c-.872 0-1.582-.706-1.582-1.574 0-.868.709-1.575 1.582-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/></svg>
-                        Reddit
-                    </a>
+                <div class="locked-teaser">
+                    <div class="teaser-item">
+                        <span class="teaser-icon">🌲</span>
+                        <span class="teaser-val">Outdoor</span>
+                        <span class="teaser-text">Focení venku</span>
+                    </div>
+                    <div class="teaser-item">
+                        <span class="teaser-icon">🔞</span>
+                        <span class="teaser-val">Hardcore</span>
+                        <span class="teaser-text">Cuckold & Cheating</span>
+                    </div>
+                    <div class="teaser-item">
+                        <span class="teaser-icon">💬</span>
+                        <span class="teaser-val">Tip Menu</span>
+                        <span class="teaser-text">Sexting na míru</span>
+                    </div>
                 </div>
             </div>
-        </main>
 
-        <footer>
-            DMCA Protected | 18+ Only | VIP Access 2026
-        </footer>
+            <div class="right-col">
+                <div class="urgency-box">
+                    <h3>🔥 50% sleva na VIP končí dnes o půlnoci:</h3>
+                    <div id="countdown" class="timer">00:00:00</div>
+                </div>
+
+                <div class="money-zone">
+                    <a href="https://onlyfans.com/kristiiinka" class="btn btn-of">
+                        <!-- Nastaveno na načítání PNG loga ze složky img -->
+                        <img src="img/OnlyFans-icon-white-symbol.png" alt="OF" style="width: 28px; height: 28px; object-fit: contain;">
+                        <div>
+                            ONLYFANS VIP
+                            <span>Odemknout galerii (Bez cenzury)</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://fansly.com/Kristiiinka" class="btn btn-fansly">
+                        <!-- Nastaveno na načítání PNG loga ze složky img -->
+                        <img src="img/Fansly_logo.svg.webp" alt="Fansly" style="width: 72px; height: 72px; object-fit: contain;">
+                        <div>
+                            FANSLY ACCESS
+                            <span>Nejtvrdší obsah a fetiš</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="social-zone">
+                    <h4>Klasické sociální sítě</h4>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/kristiiinka_f" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            Insta
+                        </a>
+                        <a href="https://twitter.com/Kristiiinkaof" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                            X
+                        </a>
+                        <a href="https://www.reddit.com/user/lolittacz/" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-1.797 1.815-5.32 1.823-7.144.025-.138-.137-.138-.358 0-.495.138-.138.361-.138.498 0 1.554 1.528 4.542 1.521 6.147-.101.139-.142.361-.144.5-.002.138.141.135.362-.001.573zm-.468-3.095c-.872 0-1.582-.706-1.582-1.574 0-.868.709-1.575 1.582-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/></svg>
+                            Reddit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -336,7 +320,6 @@
             const btnYes = document.getElementById('btn-yes');
             const btnNo = document.getElementById('btn-no');
             const display = document.getElementById('countdown');
-            
             let timerInterval;
 
             if (localStorage.getItem('ageVerified') === 'true') {
@@ -357,25 +340,35 @@
                 setTimeout(() => {
                     ageGate.classList.add('hidden');
                     mainContent.classList.remove('hidden');
-                    startTimer(300, display);
+                    startTimer(display);
                 }, 500);
             }
 
-            function startTimer(duration, display) {
-                let timer = duration, minutes, seconds;
-                timerInterval = setInterval(() => {
-                    minutes = parseInt(timer / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
+            function startTimer(display) {
+                function updateTimer() {
+                    const now = new Date();
+                    const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+                    const remaining = endOfDay - now;
+
+                    if (remaining <= 0) {
+                        display.textContent = "00:00:00";
+                        display.style.color = "#FF3366";
+                        return;
+                    }
+
+                    let hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+                    let minutes = Math.floor((remaining / 1000 / 60) % 60);
+                    let seconds = Math.floor((remaining / 1000) % 60);
+
+                    hours = hours < 10 ? "0" + hours : hours;
                     minutes = minutes < 10 ? "0" + minutes : minutes;
                     seconds = seconds < 10 ? "0" + seconds : seconds;
-                    display.textContent = minutes + ":" + seconds;
 
-                    if (--timer < 0) {
-                        clearInterval(timerInterval);
-                        display.textContent = "00:00";
-                        display.style.color = "#FF4757";
-                    }
-                }, 1000);
+                    display.textContent = hours + ":" + minutes + ":" + seconds;
+                }
+
+                updateTimer();
+                timerInterval = setInterval(updateTimer, 1000);
             }
         });
     </script>
