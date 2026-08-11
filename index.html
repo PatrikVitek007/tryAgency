@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VIP Access | @kristiiinka_f</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Čisté profi fonty: Montserrat a Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #050505;
             --bg-card: #111111;
             --bg-modal: #161616;
             --text-main: #FFFFFF;
-            --text-muted: #A0A0A0;
+            --text-muted: #888888;
             --of-blue: #00AFF0; 
             --fansly-blue: #00AEEF; 
             --danger: #FF3366; 
@@ -46,7 +47,7 @@
             z-index: -1; pointer-events: none;
         }
 
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 700; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; }
         .hidden { display: none !important; }
 
         /* Age Gate Modal */
@@ -69,21 +70,22 @@
         .overlay.fade-out .modal { transform: scale(0.9); }
 
         .warning-icon { font-size: 40px; margin-bottom: 10px; }
-        .modal h2 { margin-bottom: 10px; color: var(--danger); font-size: 26px; text-transform: uppercase; }
+        .modal h2 { margin-bottom: 10px; color: var(--danger); font-size: 28px; letter-spacing: 1px; }
         .modal p { margin-bottom: 25px; color: #ddd; font-size: 15px; }
 
         .btn {
+            font-family: 'Montserrat', sans-serif;
             display: block; width: 100%; padding: 16px; margin-bottom: 15px;
-            border: none; border-radius: 12px; font-size: 18px; font-weight: 700;
+            border: none; border-radius: 12px; font-size: 18px; font-weight: 800;
             cursor: pointer; text-decoration: none; text-align: center;
             transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        .btn.primary { background: var(--danger); color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+        .btn.primary { background: var(--danger); color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
         .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255, 51, 102, 0.5); }
         .btn.secondary { background: #222; color: #888; }
 
         .container {
-            width: 100%; max-width: 480px; padding: 40px 20px;
+            width: 100%; max-width: 480px; padding: 40px 20px 20px 20px;
             display: flex; flex-direction: column; align-items: center;
         }
         .desktop-split {
@@ -103,11 +105,10 @@
             100% { box-shadow: 0 0 25px rgba(0, 175, 240, 0.5); }
         }
         .profile-pic { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg-deep); }
-        h1 { font-size: 26px; margin-bottom: 5px; letter-spacing: -0.5px; }
+        h1 { font-size: 26px; margin-bottom: 5px; letter-spacing: -0.5px; text-transform: none; }
         .bio { color: #fff; font-size: 15px; max-width: 320px; margin-bottom: 0; font-weight: 500; }
         .bio span { color: var(--danger); font-weight: 700; }
 
-        /* Pevná mřížka, aby se text nerozjížděl na telefonech */
         .locked-teaser {
             width: 100%; background: rgba(20, 20, 20, 0.8);
             border: 1px solid rgba(255,255,255,0.08); border-radius: 15px; padding: 15px 5px; margin-bottom: 25px;
@@ -116,10 +117,10 @@
         .teaser-item { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 33%; padding: 0 5px; }
         .teaser-icon { font-size: 22px; margin-bottom: 2px; }
         .teaser-text { 
-            font-size: 10px; color: var(--text-muted); text-transform: uppercase; 
-            font-weight: 600; letter-spacing: 0.5px; text-align: center; line-height: 1.2; 
+            font-family: 'Montserrat', sans-serif; font-size: 10px; color: var(--text-muted); text-transform: uppercase; 
+            font-weight: 700; letter-spacing: 0.5px; text-align: center; line-height: 1.2; 
         }
-        .teaser-val { font-size: 15px; font-weight: 700; color: #fff; text-align: center; }
+        .teaser-val { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: #fff; text-align: center; }
 
         .urgency-box {
             width: 100%; background: rgba(255, 51, 102, 0.1);
@@ -127,24 +128,26 @@
             border: 1px dashed rgba(255, 51, 102, 0.4); text-align: center;
         }
         .urgency-box h3 { font-size: 12px; color: var(--danger); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
-        .timer { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800; color: #fff; letter-spacing: 2px; }
+        .timer { font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; color: #fff; letter-spacing: 2px; line-height: 1; }
 
         .money-zone { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
         
         .btn-of {
-            background: var(--of-blue); color: white; padding: 18px; font-size: 19px;
+            background: var(--of-blue); color: white; padding: 18px; font-size: 20px;
             animation: pulse-of 2s infinite ease-in-out;
             display: flex; align-items: center; justify-content: center; gap: 15px; text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: 0.5px;
         }
         .btn-of div { text-align: center; }
-        .btn-of span { font-size: 13px; opacity: 0.8; font-weight: 500; display: block; margin-top: 2px; text-transform: none; }
+        .btn-of span { font-family: 'Inter', sans-serif; font-size: 13px; opacity: 0.85; font-weight: 500; display: block; margin-top: 2px; text-transform: none; letter-spacing: 0; }
 
         .btn-fansly {
             background: #1a1a1a; color: var(--fansly-blue); border: 1px solid var(--fansly-blue);
-            display: flex; align-items: center; justify-content: center; gap: 15px; padding: 18px; font-size: 19px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 15px; padding: 18px; font-size: 20px; text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: 0.5px;
         }
         .btn-fansly div { text-align: center; }
-        .btn-fansly span { font-size: 13px; color: var(--text-muted); font-weight: 500; display: block; margin-top: 2px; text-transform: none; }
+        .btn-fansly span { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-muted); font-weight: 500; display: block; margin-top: 2px; text-transform: none; letter-spacing: 0; }
         .btn-fansly:hover { background: rgba(0, 174, 239, 0.1); }
 
         @keyframes pulse-of {
@@ -153,11 +156,10 @@
             100% { box-shadow: 0 0 10px rgba(0, 175, 240, 0.3); transform: scale(1); }
         }
 
-        .social-zone { margin-top: 10px; width: 100%; text-align: center; }
-        .social-zone h4 { font-size: 11px; color: #555; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .social-zone { margin-top: 10px; width: 100%; text-align: center; margin-bottom: 40px; }
+        .social-zone h4 { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: #555; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .social-icons { display: flex; justify-content: center; gap: 25px; }
         
-        /* Ikonky nastavené na šedou barvu bez barevných gradientů */
         .social-icon { 
             color: var(--text-muted); text-decoration: none; display: flex; flex-direction: column; 
             align-items: center; gap: 6px; font-size: 11px; font-weight: 500; transition: transform 0.3s, color 0.3s; 
@@ -166,7 +168,53 @@
         .social-icon:hover { transform: scale(1.1); color: #fff; }
         .social-icon:hover svg { opacity: 1; }
 
-        footer { margin-top: auto; padding-top: 40px; font-size: 11px; color: #333; text-align: center; width: 100%; }
+        /* --- LEGIT PROFESIONÁLNÍ FOOTER --- */
+        .legit-footer {
+            width: 100%;
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            font-size: 10px;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #777;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: #fff; }
+
+        .footer-dmca {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: #888;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .footer-warning {
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.4;
+            opacity: 0.6;
+            margin-top: 10px;
+        }
 
         /* ==============================================
            --- DESKTOP (PREMIUM SEAMLESS FADE LAYOUT) --- 
@@ -200,7 +248,7 @@
             }
             header { align-items: flex-start; text-align: left; margin-bottom: 20px; }
             .profile-pic-container { width: 130px; height: 130px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-            h1 { font-size: 46px; text-shadow: 0 5px 20px rgba(0,0,0,0.9); margin-bottom: 10px; }
+            h1 { font-size: 48px; text-shadow: 0 5px 20px rgba(0,0,0,0.9); margin-bottom: 10px; }
             .bio { font-size: 17px; max-width: 450px; text-shadow: 0 5px 20px rgba(0,0,0,0.9); line-height: 1.5; }
             
             .locked-teaser {
@@ -215,10 +263,20 @@
                 z-index: 10;
                 justify-content: center; align-items: center;
                 padding: 40px;
+                position: relative;
             }
 
             .urgency-box, .money-zone, .social-zone { width: 100%; max-width: 400px; }
-            footer { display: none; } 
+            
+            /* Úprava pozice footeru na PC */
+            .legit-footer {
+                position: absolute;
+                bottom: 20px;
+                width: 100%;
+                max-width: 400px;
+                border-top: none;
+                padding-top: 0;
+            }
         }
     </style>
 </head>
@@ -274,7 +332,6 @@
 
                 <div class="money-zone">
                     <a href="https://onlyfans.com/kristiiinka" class="btn btn-of">
-                        <!-- Nastaveno na načítání PNG loga ze složky img -->
                         <img src="img/OnlyFans-icon-white-symbol.png" alt="OF" style="width: 28px; height: 28px; object-fit: contain;">
                         <div>
                             ONLYFANS VIP
@@ -283,8 +340,7 @@
                     </a>
                     
                     <a href="https://fansly.com/Kristiiinka" class="btn btn-fansly">
-                        <!-- Nastaveno na načítání PNG loga ze složky img -->
-                        <img src="img/Fansly_logo.svg.webp" alt="Fansly" style="width: 72px; height: 72px; object-fit: contain;">
+                        <img src="img/Fansly_logo.svg.webp" alt="Fansly" style="width: 28px; height: 28px; object-fit: contain;">
                         <div>
                             FANSLY ACCESS
                             <span>Nejtvrdší obsah a fetiš</span>
@@ -296,19 +352,41 @@
                     <h4>Klasické sociální sítě</h4>
                     <div class="social-icons">
                         <a href="https://instagram.com/kristiiinka_f" class="social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                             Insta
                         </a>
                         <a href="https://twitter.com/Kristiiinkaof" class="social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
                             X
                         </a>
                         <a href="https://www.reddit.com/user/lolittacz/" class="social-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-1.797 1.815-5.32 1.823-7.144.025-.138-.137-.138-.358 0-.495.138-.138.361-.138.498 0 1.554 1.528 4.542 1.521 6.147-.101.139-.142.361-.144.5-.002.138.141.135.362-.001.573zm-.468-3.095c-.872 0-1.582-.706-1.582-1.574 0-.868.709-1.575 1.582-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-1.797 1.815-5.32 1.823-7.144.025-.138-.137-.138-.358 0-.495.138-.138.361-.138.498 0 1.554 1.528 4.542 1.521 6.147-.101.139-.142.361-.144.5-.002.138.141.135.362-.001.573zm-.468-3.095c-.872 0-1.582-.706-1.582-1.574 0-.868.709-1.575 1.582-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/></svg>
                             Reddit
                         </a>
                     </div>
                 </div>
+
+                <!-- NOVÝ LEGIT FOOTER -->
+                <footer class="legit-footer">
+                    <div class="footer-links">
+        <!-- Odkazuje přímo na oficiální OF podmínky v nové záložce -->
+        <a href="https://onlyfans.com/terms" target="_blank">Terms of Service</a>
+        
+        <!-- Odkazuje na OF ochranu soukromí v nové záložce -->
+        <a href="https://onlyfans.com/privacy" target="_blank">Privacy Policy</a>
+        
+        <!-- Support nasměrujeme do jejích Twitter DMs -->
+        <a href="https://twitter.com/Kristiiinkaof" target="_blank">Contact Support</a>
+    </div>
+                    <div class="footer-dmca">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        DMCA PROTECTED
+                    </div>
+                    <div>&copy; 2026 @kristiiinka_f. All Rights Reserved.</div>
+                    <div class="footer-warning">
+                        This website contains adult material and is restricted to persons 18 years or older. By entering, you agree to the terms of service.
+                    </div>
+                </footer>
             </div>
         </div>
     </div>
